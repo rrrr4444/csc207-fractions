@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}",
+            "args": ["1/2 + 4", "1 + 1/16"],
+        },
+        {
+            "type": "java",
+            "name": "FractionExpt",
+            "request": "launch",
+            "mainClass": "FractionExpt",
+            "projectName": "csc207-fractions_36562799"
+        },
+        {
+            "type": "java",
+            "name": "QuickCalculator",
+            "request": "launch",
+            "mainClass": "QuickCalculator",
+            "projectName": "csc207-fractions_36562799"
+        },
+        {
+            "type": "java",
+            "name": "Counter",
+            "request": "launch",
+            "mainClass": "lab.Counter",
+            "projectName": "csc207-fractions_36562799"
+        },
+        {
+            "type": "java",
+            "name": "FractionExpt(1)",
+            "request": "launch",
+            "mainClass": "lab.FractionExpt",
+            "projectName": "csc207-fractions_36562799"
+        },
+        {
+            "type": "java",
+            "name": "FractionSum",
+            "request": "launch",
+            "mainClass": "lab.FractionSum",
+            "projectName": "csc207-fractions_36562799"
+        }
+    ]
+}

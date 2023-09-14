@@ -26,7 +26,7 @@ public class BFCalculator {
         // set total to first value
         BigFraction total = values[0];
         Boolean is_value = false;
-        String operation;
+        String operation = "";
         for (int i = 1; i < elements.length; i++) {
             if (is_value) {
                 if (operation.equals("\\")) {

@@ -63,7 +63,14 @@ public class BigFraction {
   public BigFraction(String str) {
     String[] args = str.split("/");
     this.num = new BigInteger(args[0]);
-    this.denom = new BigInteger(args[1]);
+    if (args.length == 1) {
+      this.denom = new BigInteger("1");
+    }
+    else {
+      this.denom = new BigInteger(args[1]);
+    }
+
+
   } // BigFraction
 
   // +---------+------------------------------------------------------
