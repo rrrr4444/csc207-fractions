@@ -25,12 +25,27 @@ public class BFCalculator {
         } // for
         // set total to first value
         BigFraction total = values[0];
-        Boolean operation = true;
-        for (int i = 1; i < elements.length; i = i + 2) {
-            if (operation) {
-                ;
+        Boolean is_value = false;
+        String operation;
+        for (int i = 1; i < elements.length; i++) {
+            if (is_value) {
+                if (operation.equals("\\")) {
+                    total.divide(values[i]);
+                }
+                else if (operation.equals("*")) {
+                    total.multiply(values[i]);
+                }
+                else if (operation.equals("+")) {
+                    total.add(values[i]);
+                }
+                else if (operation.equals("-")) {
+                    total.subtract(values[i]);
+                }
             }
-            operation = !operation;
+            else {
+                operation = elements[i];
+            }
+            is_value = !is_value;
         } // for
         return total;
     } // evaluate()
