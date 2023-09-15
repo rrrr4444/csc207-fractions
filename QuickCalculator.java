@@ -10,7 +10,7 @@ public class QuickCalculator {
         args = temp;
         PrintWriter pen = new PrintWriter(System.out, true);
         BFCalculator calculator = new BFCalculator();
-            for (int i = 0; i < args.length; i++) {
+        for (int i = 0; i < args.length; i++) {
             String line = args[i];
             if (line.contains("STORE")) {
                 calculator.store(line.charAt(line.length() - 1));
