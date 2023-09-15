@@ -203,6 +203,10 @@ public class BigFraction {
     if (this.num.equals(BigInteger.ZERO)) {
       return "0";
     } // if it's zero
+    // Special case: Integer
+    else if (this.denom.equals(BigInteger.ONE)) {
+      return this.num.toString();
+    } // if it's an integer
 
     // Lump together the string represention of the numerator,
     // a slash, and the string representation of the denominator

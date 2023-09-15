@@ -9,7 +9,6 @@
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "args": ["1/2 + 4", "1 + 1/16"],
         },
         {
             "type": "java",
@@ -41,10 +40,11 @@
         },
         {
             "type": "java",
-            "name": "FractionSum",
+            "name": "QuickCalculator",
             "request": "launch",
-            "mainClass": "lab.FractionSum",
-            "projectName": "csc207-fractions_36562799"
+            "mainClass": "QuickCalculator",
+            "projectName": "csc207-fractions_36562799",
+            "args": "${command:SpecifyProgramArgs}",
         }
     ]
 }

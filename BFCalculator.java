@@ -6,7 +6,7 @@ public class BFCalculator {
 
     public BigFraction evaluate(String exp) {
         String[] elements = exp.split(" ");
-        BigFraction[] values = new BigFraction[exp.length()];
+        BigFraction[] values = new BigFraction[elements.length];
         // Separate operations from values
         // If numerical string, convert to BigFraction
         for (int i = 0; i < elements.length; i++) {
@@ -29,17 +29,17 @@ public class BFCalculator {
         String operation = "";
         for (int i = 1; i < elements.length; i++) {
             if (is_value) {
-                if (operation.equals("\\")) {
-                    total.divide(values[i]);
+                if (operation.equals("/")) {
+                    total = total.divide(values[i]);
                 }
                 else if (operation.equals("*")) {
-                    total.multiply(values[i]);
+                    total = total.multiply(values[i]);
                 }
                 else if (operation.equals("+")) {
-                    total.add(values[i]);
+                    total = total.add(values[i]);
                 }
                 else if (operation.equals("-")) {
-                    total.subtract(values[i]);
+                    total = total.subtract(values[i]);
                 }
             }
             else {
@@ -47,13 +47,15 @@ public class BFCalculator {
             }
             is_value = !is_value;
         } // for
+        // Save last result for store method
+        this.result = total;
         return total;
     } // evaluate()
 
     // Stores the last result in named register a-z
     public void store(char register) {
         int index = (int) register - (int) 'a';
-        registers[index] = this.result;
+        this.registers[index] = this.result;
     } // store(char register)
 
     Boolean is_numeric(String element) {
