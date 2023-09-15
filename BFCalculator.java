@@ -66,5 +66,4 @@ public class BFCalculator {
         } // for
         return true;
     } // is_numeric
-
 } // class BFCalculator
