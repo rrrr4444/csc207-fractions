@@ -1,22 +1,25 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class InteractiveCalculator {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         BFCalculator calculator = new BFCalculator();
-        PrintWriter pen = new PrintWriter(System.out, true);
-        BufferedReader eyes = new BufferedReader(new InputStreamReader(System.in));
-
-        String line = eyes.readLine().strip();
+        PrintWriter pen = new PrintWriter(System.out, false);
+        Scanner eyes = new Scanner(System.in);
+        pen.print("> ");
+        pen.flush();
+        String line = eyes.nextLine().strip();
         while (!line.equals("QUIT") || line.equals("")) {
             if (line.contains("STORE")) {
                 calculator.store(line.charAt(line.length() - 1));
             }
             else {
                 pen.println(line + " = " + calculator.evaluate(line));
+                pen.flush();
             }
-            line = eyes.readLine();
+            pen.print("> ");
+            pen.flush();
+            line = eyes.nextLine().strip();
         }
     }
 }
