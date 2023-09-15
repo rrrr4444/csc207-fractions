@@ -98,12 +98,7 @@ public class BigFraction {
     // The numerator is more complicated
     resultNumerator = (this.num.multiply(addMe.denom)).add(addMe.num.multiply(this.denom));
 
-    // Simplify fraction
-    BigInteger gcd = resultDenominator.gcd(resultNumerator);
-    resultNumerator = resultNumerator.divide(gcd);
-    resultDenominator = resultDenominator.divide(gcd);
-    // Return the computed value
-    return new BigFraction(resultNumerator, resultDenominator);
+    return new BigFraction(resultNumerator, resultDenominator).simplify();
   }// add(BigFraction)
 
   /**
@@ -127,12 +122,7 @@ public class BigFraction {
     // Multiply the denominators
     resultDenominator = this.denom.multiply(multMe.denom);
 
-    // Simplify fraction
-    BigInteger gcd = resultDenominator.gcd(resultNumerator);
-    resultNumerator = resultNumerator.divide(gcd);
-    resultDenominator = resultDenominator.divide(gcd);
-    // Return the computed value
-    return new BigFraction(resultNumerator, resultDenominator);
+    return new BigFraction(resultNumerator, resultDenominator).simplify();
   }// multiply(BigFraction)
 
   /**
@@ -147,12 +137,7 @@ public class BigFraction {
     // Multiply this denominator by the divByMe numerator
     resultDenominator = this.denom.multiply(divByMe.num);
 
-    // Simplify fraction
-    BigInteger gcd = resultDenominator.gcd(resultNumerator);
-    resultNumerator = resultNumerator.divide(gcd);
-    resultDenominator = resultDenominator.divide(gcd);
-    // Return the computed value
-    return new BigFraction(resultNumerator, resultDenominator);
+    return new BigFraction(resultNumerator, resultDenominator).simplify();
   }// divide(BigFraction)
 
   /**
@@ -164,6 +149,17 @@ public class BigFraction {
     // Return the computed value
     return new BigFraction(remainder, this.denom);
   }// fractional()
+
+  /**
+   * Returns a simplified fraction.
+   */
+  public BigFraction simplify() {
+    // Simplifies fraction
+    BigInteger gcd = this.num.gcd(this.denom);
+    this.num = this.num.divide(gcd);
+    this.denom = this.denom.divide(gcd);
+    return new BigFraction(this.num, this.denom);
+  }// simplify()
 
   /**
    * Get the denominator of this fraction.
