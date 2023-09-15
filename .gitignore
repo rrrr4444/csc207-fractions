@@ -1,1 +1,4 @@
 *.class
+/.idea/
+/out/
+/csc207-fractions.iml
