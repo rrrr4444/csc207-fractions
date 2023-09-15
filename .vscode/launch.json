@@ -6,9 +6,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "InteractiveCalculator",
+            "request": "launch",
+            "mainClass": "InteractiveCalculator",
+            "projectName": "csc207-fractions_36562799"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}",
+            "mainClass": "${file}"
         },
         {
             "type": "java",
@@ -44,7 +51,7 @@
             "request": "launch",
             "mainClass": "QuickCalculator",
             "projectName": "csc207-fractions_36562799",
-            "args": "${command:SpecifyProgramArgs}",
+            "args": "${command:SpecifyProgramArgs}"
         }
     ]
 }

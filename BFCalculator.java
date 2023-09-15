@@ -1,51 +1,34 @@
+/**
+ * A calculator for Fractions.
+ * Used by InteractiveCalculator and QuickCalculator.
+ *
+ * @author Reed Colloton
+ */
 public class BFCalculator {
     // Create a register for each letter of the alphabet
     BigFraction[] registers = new BigFraction[26];
     // Reflects the last computation in case it needs to be stored
     BigFraction result;
 
-    public BigFraction evaluate(String exp) {
+    public BigFraction evaluate(String exp) throws Exception {
         String[] elements = exp.split(" ");
-        BigFraction[] values = new BigFraction[elements.length];
-        // Separate operations from values
-        // If numerical string, convert to BigFraction
-        for (int i = 0; i < elements.length; i++) {
-            // If fraction, convert to fraction
-            if (elements[i].contains("/")
-                    && elements[i].length() != 1
-                    || is_numeric(elements[i])) {
-                values[i] = new BigFraction(elements[i]);
-            } // if
-            // If register value, retrieve
-            else if (Character.isAlphabetic(elements[i].charAt(0))) {
-                char c = elements[i].charAt(0);
-                int register_index = (int) c - (int) 'a';
-                values[i] = registers[register_index];
-            } // else if
-        } // for
         // set total to first value
-        BigFraction total = values[0];
-        boolean is_value = false;
+        BigFraction total = parseNumber(elements[0]);
         String operation = "";
         for (int i = 1; i < elements.length; i++) {
-            if (is_value) {
+            if (i % 2 == 0) {
                 if (operation.equals("/")) {
-                    total = total.divide(values[i]);
+                    total = total.divide(parseNumber(elements[i]));
+                } else if (operation.equals("*")) {
+                    total = total.multiply(parseNumber(elements[i]));
+                } else if (operation.equals("+")) {
+                    total = total.add(parseNumber(elements[i]));
+                } else if (operation.equals("-")) {
+                    total = total.subtract(parseNumber(elements[i]));
                 }
-                else if (operation.equals("*")) {
-                    total = total.multiply(values[i]);
-                }
-                else if (operation.equals("+")) {
-                    total = total.add(values[i]);
-                }
-                else if (operation.equals("-")) {
-                    total = total.subtract(values[i]);
-                }
-            }
-            else {
+            } else {
                 operation = elements[i];
             }
-            is_value = !is_value;
         } // for
         // Save last result for store method
         this.result = total;
@@ -58,12 +41,21 @@ public class BFCalculator {
         this.registers[index] = this.result;
     } // store(char register)
 
-    Boolean is_numeric(String element) {
-        for (int i = 0; i < element.length(); i++) {
-            if (!Character.isDigit(element.charAt(i))) {
-                return false;
-            } // if
-        } // for
-        return true;
-    } // is_numeric
+    // Return BigFraction from string representation or register letter
+    BigFraction parseNumber(String num) throws Exception {
+        // If register value, retrieve
+        if (Character.isAlphabetic(num.charAt(0))) {
+            char c = num.charAt(0);
+            int register_index = (int) c - (int) 'a';
+            if (register_index >= 26
+                    || register_index < 0
+                    || registers[register_index] == null) {
+                throw new Exception("Empty or invalid register");
+            }
+            return registers[register_index];
+        } else {
+            // Else number, convert to fraction
+            return new BigFraction(num);
+        } // else
+    } // parseNumber()
 } // class BFCalculator
