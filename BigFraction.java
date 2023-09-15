@@ -110,25 +110,9 @@ public class BigFraction {
    * Subtract the fraction `addMe` from this fraction.
    */
   public BigFraction subtract(BigFraction subMe) {
-    BigInteger resultNumerator;
-    BigInteger resultDenominator;
-
     // Negate fraction
-    BigFraction negativeSubMe = new BigFraction(BigInteger.ZERO.subtract(subMe.num), subMe.num);
-
-    // The denominator of the result is the
-    // product of this object's denominator
-    // and addMe's denominator
-    resultDenominator = this.denom.multiply(negativeSubMe.denom);
-    // The numerator is more complicated
-    resultNumerator = (this.num.multiply(negativeSubMe.denom)).add(negativeSubMe.num.multiply(this.denom));
-
-    // Simplify fraction
-    BigInteger gcd = resultDenominator.gcd(resultNumerator);
-    resultNumerator = resultNumerator.divide(gcd);
-    resultDenominator = resultDenominator.divide(gcd);
-    // Return the computed value
-    return new BigFraction(resultNumerator, gcd);
+    BigFraction negativeSubMe = new BigFraction(BigInteger.ZERO.subtract(subMe.num), subMe.denom);
+    return negativeSubMe.add(new BigFraction(this.num, this.denom));
   }// add(BigFraction)
 
   /**

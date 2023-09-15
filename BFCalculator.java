@@ -5,18 +5,20 @@
  * @author Reed Colloton
  */
 public class BFCalculator {
-    // Create a register for each letter of the alphabet
+    // A register for each letter of the alphabet
     BigFraction[] registers = new BigFraction[26];
-    // Reflects the last computation in case it needs to be stored
+    // Saves the last computation for the STORE command
     BigFraction result;
 
-    public BigFraction evaluate(String exp) {
+    public BigFraction evaluate(String exp) throws Exception {
         String[] elements = exp.split(" ");
         // set total to first value
         BigFraction total = parseNumber(elements[0]);
         String operation = "";
         for (int i = 1; i < elements.length; i++) {
-            if (i % 2 == 0) {
+            if (i % 2 == 1) { // Odd elements are operations
+                operation = elements[i];
+            } else  { // Even elements are values
                 if (operation.equals("/")) {
                     total = total.divide(parseNumber(elements[i]));
                 } else if (operation.equals("*")) {
@@ -25,9 +27,9 @@ public class BFCalculator {
                     total = total.add(parseNumber(elements[i]));
                 } else if (operation.equals("-")) {
                     total = total.subtract(parseNumber(elements[i]));
-                }
-            } else {
-                operation = elements[i];
+                } else {
+                    throw new Exception("Invalid operation");
+            }
             }
         } // for
         // Save last result for store method

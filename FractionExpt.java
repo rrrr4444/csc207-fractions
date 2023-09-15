@@ -10,10 +10,8 @@ import java.io.PrintWriter;
 public class FractionExpt {
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
-    BigFraction f1;
-    f1 = new BigFraction(1, 2);
-    BigFraction f2;
-    f2 = new BigFraction(1, 4);
+    BigFraction f1 = new BigFraction(1, 2);
+    BigFraction f2 = new BigFraction(1, 4);
     pen.println("------------------");
     pen.println("1st fraction:  " + f1);
     pen.println("2nd fraction:  " + f2);
