@@ -1,6 +1,6 @@
 public class BFCalculator {
     // Create a register for each letter of the alphabet
-    BigFraction registers[] = new BigFraction[26];
+    BigFraction[] registers = new BigFraction[26];
     // Reflects the last computation in case it needs to be stored
     BigFraction result;
 
@@ -18,14 +18,14 @@ public class BFCalculator {
             } // if
             // If register value, retrieve
             else if (Character.isAlphabetic(elements[i].charAt(0))) {
-                Character c = elements[i].charAt(0);
+                char c = elements[i].charAt(0);
                 int register_index = (int) c - (int) 'a';
                 values[i] = registers[register_index];
             } // else if
         } // for
         // set total to first value
         BigFraction total = values[0];
-        Boolean is_value = false;
+        boolean is_value = false;
         String operation = "";
         for (int i = 1; i < elements.length; i++) {
             if (is_value) {
