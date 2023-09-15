@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Reed Colloton
  */
 public class InteractiveCalculator {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         BFCalculator calculator = new BFCalculator();
         PrintWriter pen = new PrintWriter(System.out, false);
         Scanner eyes = new Scanner(System.in);

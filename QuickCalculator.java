@@ -6,7 +6,7 @@ import java.io.PrintWriter;
  * @author Reed Colloton
  */
 public class QuickCalculator {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         PrintWriter pen = new PrintWriter(System.out, true);
         BFCalculator calculator = new BFCalculator();
         for (int i = 0; i < args.length; i++) {

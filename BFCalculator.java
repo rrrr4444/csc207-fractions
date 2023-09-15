@@ -10,7 +10,7 @@ public class BFCalculator {
     // Reflects the last computation in case it needs to be stored
     BigFraction result;
 
-    public BigFraction evaluate(String exp) throws Exception {
+    public BigFraction evaluate(String exp) {
         String[] elements = exp.split(" ");
         // set total to first value
         BigFraction total = parseNumber(elements[0]);
@@ -42,17 +42,12 @@ public class BFCalculator {
     } // store(char register)
 
     // Return BigFraction from string representation or register letter
-    BigFraction parseNumber(String num) throws Exception {
+    BigFraction parseNumber(String num) {
         // If register value, retrieve
-        if (Character.isAlphabetic(num.charAt(0))) {
-            char c = num.charAt(0);
-            int register_index = (int) c - (int) 'a';
-            if (register_index >= 26
-                    || register_index < 0
-                    || registers[register_index] == null) {
-                throw new Exception("Empty or invalid register");
-            }
-            return registers[register_index];
+        char c = num.charAt(0);
+        if (Character.isAlphabetic(c)) {
+            int i = (int) c - (int) 'a';
+            return registers[i];
         } else {
             // Else number, convert to fraction
             return new BigFraction(num);
