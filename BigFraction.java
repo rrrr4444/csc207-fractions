@@ -158,6 +158,12 @@ public class BigFraction {
     BigInteger gcd = this.num.gcd(this.denom);
     this.num = this.num.divide(gcd);
     this.denom = this.denom.divide(gcd);
+    if (this.denom.compareTo(BigInteger.ZERO) < 0) {
+      // If denominator is negative
+      // Multiply numerator and denominator by -1
+      this.num = this.num.multiply(BigInteger.valueOf(-1));
+      this.denom = this.denom.multiply(BigInteger.valueOf(-1));
+    }
     return new BigFraction(this.num, this.denom);
   }// simplify()
 

@@ -77,6 +77,10 @@ public class BFCalculator {
             }
         } else {
             String digits = num.replace("/", "");
+            char c = digits.charAt(0);
+            if (c == '+' || c == '-') {
+                digits = digits.substring(1);
+            }
             for (int i = 0; i < digits.length(); i++) {
                 if (!Character.isDigit(digits.charAt(i))) {
                     throw new Exception("Invalid value");
