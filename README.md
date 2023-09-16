@@ -1,4 +1,4 @@
-September 15th, 2023
+September 16th, 2023
 Fun with Fractions
 
 Members: Reed Colloton
