@@ -10,7 +10,9 @@ public class BFCalculator {
   // Saves the last computation for the STORE command
   BigFraction result = null;
 
-  // Evaluates an expression for the calculator
+  /**
+   * Evaluates an expression for the calculator.
+   */
   public BigFraction evaluate(String exp) throws Exception {
     String[] elements = exp.split(" ");
     if (elements.length % 2 != 1) {
@@ -43,7 +45,9 @@ public class BFCalculator {
     return total;
   } // evaluate()
 
-  // Stores the last result in named register a-z
+  /**
+   * Stores the last result in named register a-z.
+   */
   public void store(char register) throws Exception {
     int i = registerIndex(register);
     if (this.result == null) {
@@ -53,7 +57,9 @@ public class BFCalculator {
     }
   } // store(char register)
 
-  // Return BigFraction from string representation or register letter
+  /**
+   * Return BigFraction from string representation or register letter
+   */
   BigFraction parseValue(String num) throws Exception {
     // Throws exceptions if value is invalid
     validateValue(num);
@@ -68,7 +74,9 @@ public class BFCalculator {
     } // else
   } // parseValue()
 
-  // Validates a value for the calculator, raises appropriate errors if invalid
+  /**
+   * Validates a value for the calculator, raises appropriate errors if invalid
+   */
   void validateValue(String num) throws Exception {
     if (num.length() == 1 && !Character.isDigit(num.charAt(0))) {
       int i = registerIndex(num.charAt(0));
@@ -95,7 +103,9 @@ public class BFCalculator {
     }
   } // validateValue()
 
-  // Calculates an index value for the register given char c
+  /**
+   * Calculates an index value for the register given char c
+   */
   int registerIndex(Character c) throws Exception {
     int i = (int) c - (int) 'a';
     if (i >= 26 || i < 0) {
